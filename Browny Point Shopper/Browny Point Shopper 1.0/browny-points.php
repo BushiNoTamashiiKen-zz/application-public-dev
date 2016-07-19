@@ -148,7 +148,7 @@ function browny_checkout_shortcode(){
 
 	return ob_get_clean();
 }
-add_shortcode( 'mofu_checkout_page', 'browny_checkout_shortcode' );
+add_shortcode( 'checkout_page', 'browny_checkout_shortcode' );
 
 // Adds custom post type to wp
 function browny_store_init() {
