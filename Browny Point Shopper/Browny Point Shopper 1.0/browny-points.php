@@ -102,14 +102,11 @@ function browny_points_transaction(){
 			echo 'Sorry your points balance is' . $browny_points;
 			echo 'Please recharge your mofumofu points';
 		}
-
-		/*$item_price += 500; // Increment the price by 500 each time
-		update_post_meta($item_id, 'store_item_price', $item_price);*/
 	
 		// Set the mailer variable
-		//$sent = wp_mail($to, $subject, $message);
+		$sent = wp_mail($to, $subject, $message);
 
-		//if($sent){
+		if($sent){
 
 			// redirect after header definitions
 			?>
@@ -117,7 +114,7 @@ function browny_points_transaction(){
 				window.location= <?php echo "'" . $checkout . "'"; ?>;
    			</script>
 			<?php
-		//}
+		}
 	}elseif(isset($_POST['checkout_cancelled'])){
 
 		// redirect after header definitions
