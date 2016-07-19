@@ -5,3 +5,12 @@ Changelog:
 
 V.0.0.1 
  - Plugin and template files created for seamless integration with any WP site.
+ -
+
+Shortcodes:
+
+Shop Items Page
+- [store_transact]
+
+Checkout Page
+- [checkout_page]
