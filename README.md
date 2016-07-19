@@ -1,6 +1,7 @@
 # application-public-dev
 A public repo for development of Wordpress and other application frameworks under open source licensing
 
+Browny Points Plugin 0.1
 Changelog:
 
 V.0.0.1 
@@ -9,8 +10,5 @@ V.0.0.1
 
 Shortcodes:
 
-Shop Items Page
-- [store_transact]
-
-Checkout Page
-- [checkout_page]
+ - Shop Items Page [store_transact]
+ - Checkout Page [checkout_page]
