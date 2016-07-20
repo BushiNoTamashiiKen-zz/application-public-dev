@@ -100,9 +100,9 @@ function browny_points_transaction() {
 		}
 	
 		// Set the mailer variable
-		//$sent = wp_mail($to, $subject, $message);
+		$sent = wp_mail($to, $subject, $message);
 
-		//if($sent){
+		if($sent){
 
 			// redirect after headers have already been sent
 			?>
@@ -110,7 +110,7 @@ function browny_points_transaction() {
 				window.location= <?php echo "'" . $checkout . "'"; ?>;
    			</script>
 			<?php
-		//}
+		}
 	}elseif(isset($_POST['checkout_cancelled'])) {
 
 		// redirect after header definitions
