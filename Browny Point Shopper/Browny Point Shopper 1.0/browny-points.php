@@ -1,14 +1,12 @@
 <?php
 /**
-  Plugin Name: Browny Point Shopper 1.0
-  Plugin URI: https://github.com/BushiNoTamashiiKen/application-public-dev
-  Description: A plugin that allocates points based on the number of published posts. The points can then be used in a store to purchase vouchers.
-  @param publish_post hook
-  Version: 1.0
-  Author: Thabo Mbuyisa
-  Author URI: http://behance.net/MeatMan
-  Last modified: 21-07-16
-  License: GPL2+
+ * Plugin Name: Browny Point Shopper 1.0
+ * Description: A plugin that allocates points based on the number of posts approved and published by admin. The user can then use these points in a store to purchase items.
+ * @param publish_post hook
+ * Version: 1.0
+ * Author: Thabo Mbuyisa
+ * Last modified: 21-07-16
+ * License: GPL2+
  */
 
 // Allocates points to users based on the number of posts submitted 
@@ -69,7 +67,7 @@ add_action('publish_post', 'allocate_browny_points', 10, 2);
 function browny_points_transaction() {
 
 	$checkout = home_url('/checkout/');
-	$cancel_checkout = home_url('/browny-shop/');
+	$cancel_checkout = home_url('/vouchers/');
 
 	$current_user = wp_get_current_user(); // Get the current user
 	$current_user_id = get_current_user_id(); // Get the current logged in user's ID to pass to the WP_User instance
@@ -95,16 +93,19 @@ function browny_points_transaction() {
 
 			$residual = $browny_points - $item_price;
 			update_user_meta($current_user_id, 'browny_points', $residual);
-		}else{
+		}elseif($browny_points < $item_price){
 
 			echo '<p>Sorry your points balance is' . ' ' . $browny_points .'</p>';
 			echo '<p>Please recharge your points</p>';
-		}
-	
-		// Set the mailer variable
-		//$sent = wp_mail($to, $subject, $message);
+		}elseif($browny_points == '') {
 
-		//if($sent){
+			echo'<p><strong>You currently do not have any browny points in your account.<br />Upload a post and get some browny points to spend.</strong></p><br />';
+		}else{
+
+			// Set the mailer variable
+			//$sent = wp_mail($to, $subject, $message);
+
+			//if($sent){
 
 			// redirect after headers have already been sent
 			?>
@@ -112,7 +113,9 @@ function browny_points_transaction() {
 				window.location= <?php echo "'" . $checkout . "'"; ?>;
    			</script>
 			<?php
-		//}
+			//}
+		}
+
 	}elseif(isset($_POST['checkout_cancelled'])) {
 
 		// redirect after header definitions
