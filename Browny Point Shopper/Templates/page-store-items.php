@@ -17,8 +17,16 @@ get_header();
 			$current_user = wp_get_current_user();
 			$current_user_id = get_current_user_id();
 			$browny_points = get_user_meta($current_user_id, 'browny_points', true);
-			echo'<h3><strong>Welcome' . ' ' . $current_user->display_name . ' ' . '</strong></h3>';
-			echo'<p><strong>Your current points balance is' . ' ' . $browny_points . '</strong></p>';
+
+			if($browny_points == '') {
+
+				echo'<h3><strong>Welcome' . ' ' . $current_user->display_name . ' ' . '</strong></h3>';
+				echo'<p><strong>You currently do not have any browny points in your account.<br />Upload a post and get some browny points to spend.</strong></p><br />';
+			}else{
+
+				echo'<h3><strong>Welcome' . ' ' . $current_user->display_name . ' ' . '</strong></h3>';
+				echo'<p><strong>Your current points balance is' . ' ' . $browny_points . '</strong></p>';
+			}
 		?>
 		<div class="">
 		<?php
