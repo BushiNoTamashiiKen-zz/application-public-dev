@@ -1,12 +1,13 @@
 <?php
 /**
- * Plugin Name: Browny Point Shopper 1.0
- * Description: A plugin that allocates points based on the number of posts approved and published by admin. The user can then use these points in a store to purchase items.
- * @param publish_post hook
- * Version: 1.0
- * Author: Thabo Mbuyisa
- * Last modified: 21-07-16
- * License: GPL2+
+  Plugin Name: Browny Point Shopper 1.0
+  Plugin URI: https://github.com/BushiNoTamashiiKen/application-public-dev
+  Description: A plugin that allocates points based on the number of published posts. The points can then be used in a store to purchase vouchers.
+  Version: 1.0
+  Author: Thabo Mbuyisa
+  Author URI: http://behance.net/MeatMan
+  Last modified: 21-07-16
+  License: GPL2+
  */
 
 // Allocates points to users based on the number of posts submitted 
